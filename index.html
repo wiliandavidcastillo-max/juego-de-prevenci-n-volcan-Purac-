@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión Puracé - Gestión del Riesgo</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="game-wrapper">
+        <!-- Encabezado con Volcán -->
+        <div class="volcano-header">
+            <div class="volcano-icon">🌋</div>
+            <h1>DESAFÍO VOLCÁN PURACÉ</h1>
+        </div>
+
+        <!-- PANTALLA 1: PORTADA INSTITUCIONAL -->
+        <div id="cover-screen" class="screen active">
+            <div class="institutional-card">
+                <h2>PROYECTO EDUCATIVO</h2>
+                <h3>Gestión del Riesgo y Prevención Volcánica</h3>
+                
+                <div class="info-grid">
+                    <p><strong>Elaborado por:</strong> David Castillo</p>
+                    <p><strong>Docente:</strong> Álvaro Stid Bolaños Vásquez</p>
+                    <p><strong>Grado:</strong> 10B</p>
+                    <p><strong>Institución:</strong> I.E. Manuel María Mosquera</p>
+                </div>
+
+                <button id="cover-start-btn" class="arcade-btn green">IR AL MENÚ PRINCIPAL</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA 2: SELECCIÓN DE DIFICULTAD -->
+        <div id="start-screen" class="screen">
+            <div class="avatar-box">
+                <span class="avatar-emoji">👨‍🚒</span>
+                <p class="dialogue-bubble">"¡Bienvenido! Selecciona un nivel de dificultad antes de comenzar la expedición hacia la zona segura."</p>
+            </div>
+
+            <div class="difficulty-selector">
+                <label>Elige la dificultad:</label>
+                <div class="diff-buttons">
+                    <button class="diff-btn active" data-diff="easy">🟢 Fácil</button>
+                    <button class="diff-btn" data-diff="medium">🟡 Medio</button>
+                    <button class="diff-btn" data-diff="hard">🔴 Difícil</button>
+                </div>
+            </div>
+
+            <p class="rules-card">⚠️ Tienes <strong>3 vidas</strong>. Cada fallo resta 1 vida. Cuentas con <strong>2 pistas</strong> en toda la partida.</p>
+            
+            <button id="start-btn" class="arcade-btn green">¡INICIAR MISIÓN!</button>
+        </div>
+
+        <!-- PANTALLA 3: TABLERO DEL JUEGO -->
+        <div id="game-screen" class="screen">
+            <!-- Barra de Progreso -->
+            <div class="map-progress-container">
+                <span class="icon">🎒</span>
+                <div class="track">
+                    <div id="progress-bar" class="progress-bar"></div>
+                    <div id="player-pin" class="player-pin">📍</div>
+                </div>
+                <span class="icon">🛡️</span>
+            </div>
+
+            <!-- HUD de Control -->
+            <div class="status-hud">
+                <div class="hud-box">
+                    <span class="hud-label">VIDAS:</span>
+                    <span id="lives-display">❤️❤️❤️</span>
+                </div>
+                <div class="hud-box">
+                    <span class="hud-label">PUNTAJE:</span>
+                    <span id="score-display">0</span>
+                </div>
+                <button id="pause-btn" class="hud-btn">⏸️ Pausa</button>
+            </div>
+
+            <!-- Pregunta -->
+            <div class="question-board">
+                <span class="board-icon" id="diff-badge">🟢</span>
+                <h2 id="question-text">Cargando pregunta...</h2>
+            </div>
+
+            <!-- Opciones de Respuesta -->
+            <div id="options-grid" class="options-grid"></div>
+
+            <!-- Botón de Pistas -->
+            <div class="action-bar">
+                <button id="hint-btn" class="arcade-btn yellow">💡 Usar Pista (<span id="hints-count">2</span>)</button>
+            </div>
+
+            <div id="feedback-message" class="feedback-banner"></div>
+        </div>
+
+        <!-- PANTALLA DE PAUSA -->
+        <div id="pause-screen" class="screen overlay">
+            <div class="outcome-card">
+                <h2>⏸️ JUEGO EN PAUSA</h2>
+                <p>Tómate un momento para respirar. La misión te espera.</p>
+                <button id="resume-btn" class="arcade-btn green">CONTINUAR</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE GAME OVER -->
+        <div id="game-over-screen" class="screen">
+            <div class="outcome-card loss">
+                <span class="big-emoji">💥</span>
+                <h2>¡MISIÓN FALLIDA!</h2>
+                <p>Te has quedado sin vidas. ¡Repasa las normas de seguridad del volcán Puracé e inténtalo de nuevo!</p>
+                <div class="final-score-box">Puntaje logrado: <strong id="loss-score">0</strong></div>
+                <button id="restart-btn-loss" class="arcade-btn red">REINTENTAR</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE VICTORIA -->
+        <div id="win-screen" class="screen">
+            <div class="outcome-card win">
+                <span class="big-emoji">🏆</span>
+                <h2>¡ZONA SEGURA ALCANZADA!</h2>
+                <p>¡Felicitaciones! Has evacuado con éxito y demostrado un conocimiento experto sobre la gestión del riesgo volcánico.</p>
+                <div class="final-score-box">Puntaje acumulado: <strong id="win-score">0</strong></div>
+                <button id="restart-btn-win" class="arcade-btn green">JUGAR OTRA VEZ</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
